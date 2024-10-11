@@ -119,7 +119,7 @@ def test_bleu_en():
     )
 
 
-def test_Chrf_zh():
+def test_chrf_zh():
     responses = [
         "敏捷的棕色狐狸跳过了懒狗。",
         "敏捷的棕色狐狸跳过了睡着的猫。",
