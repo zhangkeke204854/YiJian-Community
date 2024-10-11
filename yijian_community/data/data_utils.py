@@ -28,7 +28,6 @@ def load_data(data_path: str) -> Dataset:
 
     Args:
         data_path (str): path to the directory containing the evaluation data files.
-        NOTE: Files should all
         1) be the same format, which can be csv, jsonl or parquet;
         2) have the same columns.
         3) (optional but recommended) contains a column named "prompt_text"
@@ -80,7 +79,6 @@ def save_image(
 
     Args:
         save_path (str): path to the directory which saves the images
-        model_name (str): target model name
         prompt_texts (List[str]): list of prompt texts
         images (List[Image.Image]): list of Image.Image instance
 
