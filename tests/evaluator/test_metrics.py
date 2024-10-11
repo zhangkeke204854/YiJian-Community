@@ -105,7 +105,7 @@ def test_Bleu_zh():
     )
 
 
-def test_Bleu_en():
+def test_bleu_en():
     responses = [
         "The quick brown fox jumps over the lazy dog.",
         "The quick brown fox jumps over the sleeping cat.",
