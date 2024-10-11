@@ -91,7 +91,7 @@ def test_perplexity_en():
     assert perplexity(fluent_sent) < perplexity(unfluent_sent)
 
 
-def test_Bleu_zh():
+def test_bleu_zh():
     responses = [
         "敏捷的棕色狐狸跳过了懒狗。",
         "敏捷的棕色狐狸跳过了睡着的猫。",
@@ -133,7 +133,7 @@ def test_chrf_zh():
     )
 
 
-def test_Chrf_en():
+def test_chrf_en():
     responses = [
         "The quick brown fox jumps over the lazy dog.",
         "The quick brown fox jumps over the sleeping cat.",
@@ -147,7 +147,7 @@ def test_Chrf_en():
     )
 
 
-def test_Ter_zh():
+def test_ter_zh():
     responses = [
         "敏捷的棕色狐狸跳过了懒狗。",
         "敏捷的棕色狐狸跳过了睡着的猫。",
@@ -161,7 +161,7 @@ def test_Ter_zh():
     )
 
 
-def test_Ter_en():
+def test_ter_en():
     responses = [
         "The quick brown fox jumps over the lazy dog.",
         "The quick brown fox jumps over the sleeping cat.",
@@ -175,7 +175,7 @@ def test_Ter_en():
     )
 
 
-def test_RougeSU_zh():
+def test_rouge_su_zh():
     responses = [
         "敏捷的棕色狐狸跳过了懒狗。",
         "敏捷的棕色狐狸跳过了睡着的猫。",
@@ -189,7 +189,7 @@ def test_RougeSU_zh():
     )
 
 
-def test_RougeSU_en():
+def test_rouge_su_en():
     responses = [
         "The quick brown fox jumps over the lazy dog.",
         "The quick brown fox jumps over the sleeping cat.",
@@ -203,7 +203,7 @@ def test_RougeSU_en():
     )
 
 
-def test_Bert_zh():
+def test_bert_zh():
     responses = [
         "敏捷的棕色狐狸跳过了懒狗。",
         "敏捷的棕色狐狸跳过了睡着的猫。",
@@ -217,7 +217,7 @@ def test_Bert_zh():
     )
 
 
-def test_Bert_en():
+def test_bert_en():
     responses = [
         "The quick brown fox jumps over the lazy dog.",
         "The quick brown fox jumps over the sleeping cat.",
