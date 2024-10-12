@@ -17,7 +17,7 @@
 from typing import Union
 
 import torch
-import torchvision.transforms as T
+import torchvision.transforms as t
 from datasets import Dataset
 from PIL import Image
 from torchvision.transforms.functional import InterpolationMode
@@ -36,12 +36,8 @@ IMAGENET_STD = (0.229, 0.224, 0.225)
 class InternVL2ImageDefense(Infer):
     # code adapted from https://huggingface.co/OpenGVLab/InternVL2-2B#inference-with-transformers
 
-    def __init__(
-        self,
-        model_path: str,
-        defense_prompt: str = image_defense_prompt,
-        cuda_device: str = "",
-    ):
+    def __init__(self, model_path: str, defense_prompt: str = image_defense_prompt, cuda_device: str = ""):
+        super().__init__(model_path)
         self.defense_prompt = defense_prompt
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_path, trust_remote_code=True, use_fast=False
@@ -100,22 +96,24 @@ class InternVL2ImageDefense(Infer):
             torch.cuda.empty_cache()
         return dataset.add_column(response_column, preds_all)
 
-    def _build_transform(self, input_size):
-        MEAN, STD = IMAGENET_MEAN, IMAGENET_STD
-        transform = T.Compose(
+    @staticmethod
+    def _build_transform(input_size):
+        mean, std = IMAGENET_MEAN, IMAGENET_STD
+        transform = t.Compose(
             [
-                T.Lambda(lambda img: img.convert('RGB') if img.mode != 'RGB' else img),
-                T.Resize(
+                t.Lambda(lambda img: img.convert('RGB') if img.mode != 'RGB' else img),
+                t.Resize(
                     (input_size, input_size), interpolation=InterpolationMode.BICUBIC
                 ),
-                T.ToTensor(),
-                T.Normalize(mean=MEAN, std=STD),
+                t.ToTensor(),
+                t.Normalize(mean=mean, std=std),
             ]
         )
         return transform
 
+    @staticmethod
     def _find_closest_aspect_ratio(
-        self, aspect_ratio, target_ratios, width, height, image_size
+            aspect_ratio, target_ratios, width, height, image_size
     ):
         best_ratio_diff = float('inf')
         best_ratio = (1, 1)
@@ -143,7 +141,7 @@ class InternVL2ImageDefense(Infer):
             for n in range(min_num, max_num + 1)
             for i in range(1, n + 1)
             for j in range(1, n + 1)
-            if i * j <= max_num and i * j >= min_num
+            if max_num >= i * j >= min_num
         )
         target_ratios = sorted(target_ratios, key=lambda x: x[0] * x[1])
 
@@ -185,6 +183,8 @@ class InternVL2ImageDefense(Infer):
             image = (
                 image_file if image_file.mode == "RGB" else image_file.convert("RGB")
             )
+        else:
+            return
 
         transform = self._build_transform(input_size=input_size)
         images = self._dynamic_preprocess(
@@ -192,4 +192,5 @@ class InternVL2ImageDefense(Infer):
         )
         pixel_values = [transform(image) for image in images]
         pixel_values = torch.stack(pixel_values)
+
         return pixel_values
