@@ -179,12 +179,10 @@ class InternVL2ImageDefense(Infer):
     ):
         if isinstance(image_file, str):
             image = Image.open(image_file).convert('RGB')
-        elif isinstance(image_file, Image.Image):
+        else :
             image = (
                 image_file if image_file.mode == "RGB" else image_file.convert("RGB")
             )
-        else:
-            return
 
         transform = self._build_transform(input_size=input_size)
         images = self._dynamic_preprocess(
