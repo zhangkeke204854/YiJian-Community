@@ -92,7 +92,6 @@ class ThuCoaiShieldLM(Infer):
                 ipt = f"[gMASK]sop<|user|> \n {ipt}<|assistant|> \n"
             else:
                 raise NotImplementedError(f"Model base {model_base} not supported yet!")
-
             return ipt
 
         if lang == 'zh':
