@@ -15,19 +15,19 @@
 
 
 from abc import ABC
-from typing import Any
+# from typing import Any
 
 from datasets import Dataset
 from sentence_transformers.util import cos_sim
 
 
 class Tagger(ABC):
-
     def __init__(self) -> None:
         super().__init__()
 
-    def __call__(self, *args: Any, **kwds: Any) -> Any:
-        return super().__call__(*args, **kwds)
+    # 以下代码会报错，父类ABC没有__call__方法
+    # def __call__(self, *args: Any, **kwargs: Any) -> Any:
+    #     return super().__call__(*args, **kwargs)
 
 
 class NaiveTextSimilarityTagger(Tagger):
@@ -38,6 +38,7 @@ class NaiveTextSimilarityTagger(Tagger):
         Args:
             embedding_model (_type_): model instance for computing text embeddings
         """
+        super().__init__()
         self.embedding_model = embedding_model
 
     def __call__(
@@ -85,6 +86,7 @@ class NaiveTextSimilarityTagger(Tagger):
                             )
                         )
 
+            sim_risky, sim_safe = 0, 0
             if not risky_embeddings and not safe_embeddings:
                 raise ValueError("Missing reference responses for current response!")
             if risky_embeddings:
@@ -98,6 +100,8 @@ class NaiveTextSimilarityTagger(Tagger):
                 row["target_prediction"] = 1 if sim_risky > risky_threshold else 0
             else:
                 row["target_prediction"] = 1 if sim_risky > sim_safe else 0
+
             return row
 
         return dataset.map(_tag)
+
