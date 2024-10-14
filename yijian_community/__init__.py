@@ -17,14 +17,14 @@
 from .data import load_data, save_data
 from .defense import InternVL2ImageDefense, ThuCoaiShieldLM
 from .evaluator import (
-    Bert,
-    Bleu,
-    Chrf,
+    bert,
+    bleu,
+    chrf,
     NaiveTextSimilarityTagger,
     Perplexity,
-    RougeSU,
+    rouge_su,
     Tagger,
-    Ter,
+    ter,
     accuracy,
     attack_success_rate,
     decline_rate,

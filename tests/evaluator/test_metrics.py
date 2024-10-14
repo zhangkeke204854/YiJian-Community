@@ -17,12 +17,12 @@
 import pytest
 
 from yijian_community.evaluator import (
-    Bert,
-    Bleu,
-    Chrf,
+    bert,
+    bleu,
+    chrf,
     Perplexity,
-    RougeSU,
-    Ter,
+    rouge_su,
+    ter,
     accuracy,
     attack_success_rate,
     decline_rate,
@@ -98,9 +98,9 @@ def test_bleu_zh():
         "每天一个苹果，医生远离我。",
     ]
     references = ["敏捷的棕色狐狸跳过了懒狗。"]
-    assert Bleu(responses[0], references, lang="zh") > Bleu(
+    assert bleu(responses[0], references, lang="zh") > bleu(
         responses[1], references, lang="zh"
-    ) and Bleu(responses[1], references, lang="zh") > Bleu(
+    ) and bleu(responses[1], references, lang="zh") > bleu(
         responses[2], references, lang="zh"
     )
 
@@ -112,9 +112,9 @@ def test_bleu_en():
         "An apple a day keeps the doctor away.",
     ]
     references = ["The quick brown fox jumps over the lazy dog."]
-    assert Bleu(responses[0], references, lang="en") > Bleu(
+    assert bleu(responses[0], references, lang="en") > bleu(
         responses[1], references, lang="en"
-    ) and Bleu(responses[1], references, lang="en") > Bleu(
+    ) and bleu(responses[1], references, lang="en") > bleu(
         responses[2], references, lang="en"
     )
 
@@ -126,9 +126,9 @@ def test_chrf_zh():
         "每天一个苹果，医生远离我。",
     ]
     references = ["敏捷的棕色狐狸跳过了懒狗。"]
-    assert Chrf(responses[0], references, lang="zh") > Chrf(
+    assert chrf(responses[0], references, lang="zh") > chrf(
         responses[1], references, lang="zh"
-    ) and Chrf(responses[1], references, lang="zh") > Chrf(
+    ) and chrf(responses[1], references, lang="zh") > chrf(
         responses[2], references, lang="zh"
     )
 
@@ -140,9 +140,9 @@ def test_chrf_en():
         "An apple a day keeps the doctor away.",
     ]
     references = ["The quick brown fox jumps over the lazy dog."]
-    assert Chrf(responses[0], references, lang="en") > Chrf(
+    assert chrf(responses[0], references, lang="en") > chrf(
         responses[1], references, lang="en"
-    ) and Chrf(responses[1], references, lang="en") > Chrf(
+    ) and chrf(responses[1], references, lang="en") > chrf(
         responses[2], references, lang="en"
     )
 
@@ -154,9 +154,9 @@ def test_ter_zh():
         "每天一个苹果，医生远离我。",
     ]
     references = ["敏捷的棕色狐狸跳过了懒狗。"]
-    assert Ter(responses[0], references, lang="zh") < Ter(
+    assert ter(responses[0], references, lang="zh") < ter(
         responses[1], references, lang="zh"
-    ) and Ter(responses[1], references, lang="zh") < Ter(
+    ) and ter(responses[1], references, lang="zh") < ter(
         responses[2], references, lang="zh"
     )
 
@@ -168,9 +168,9 @@ def test_ter_en():
         "An apple a day keeps the doctor away.",
     ]
     references = ["The quick brown fox jumps over the lazy dog."]
-    assert Ter(responses[0], references, lang="en") < Ter(
+    assert ter(responses[0], references, lang="en") < ter(
         responses[1], references, lang="en"
-    ) and Ter(responses[1], references, lang="en") < Ter(
+    ) and ter(responses[1], references, lang="en") < ter(
         responses[2], references, lang="en"
     )
 
@@ -182,9 +182,9 @@ def test_rouge_su_zh():
         "每天一个苹果，医生远离我。",
     ]
     references = ["敏捷的棕色狐狸跳过了懒狗。"]
-    assert RougeSU(responses[0], references, lang="zh") > RougeSU(
+    assert rouge_su(responses[0], references, lang="zh") > rouge_su(
         responses[1], references, lang="zh"
-    ) and RougeSU(responses[1], references, lang="zh") > RougeSU(
+    ) and rouge_su(responses[1], references, lang="zh") > rouge_su(
         responses[2], references, lang="zh"
     )
 
@@ -196,9 +196,9 @@ def test_rouge_su_en():
         "An apple a day keeps the doctor away.",
     ]
     references = ["The quick brown fox jumps over the lazy dog."]
-    assert RougeSU(responses[0], references, lang="en") > RougeSU(
+    assert rouge_su(responses[0], references, lang="en") > rouge_su(
         responses[1], references, lang="en"
-    ) and RougeSU(responses[1], references, lang="en") > RougeSU(
+    ) and rouge_su(responses[1], references, lang="en") > rouge_su(
         responses[2], references, lang="en"
     )
 
@@ -210,9 +210,9 @@ def test_bert_zh():
         "每天一个苹果，医生远离我。",
     ]
     references = ["敏捷的棕色狐狸跳过了懒狗。"]
-    assert Bert(responses[0], references, lang="zh") > Bert(
+    assert bert(responses[0], references, lang="zh") > bert(
         responses[1], references, lang="zh"
-    ) and Bert(responses[1], references, lang="zh") > Bert(
+    ) and bert(responses[1], references, lang="zh") > bert(
         responses[2], references, lang="zh"
     )
 
@@ -224,8 +224,8 @@ def test_bert_en():
         "An apple a day keeps the doctor away.",
     ]
     references = ["The quick brown fox jumps over the lazy dog."]
-    assert Bert(responses[0], references, lang="en") > Bert(
+    assert bert(responses[0], references, lang="en") > bert(
         responses[1], references, lang="en"
-    ) and Bert(responses[1], references, lang="en") > Bert(
+    ) and bert(responses[1], references, lang="en") > bert(
         responses[2], references, lang="en"
     )

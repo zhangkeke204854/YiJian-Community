@@ -87,7 +87,9 @@ def f1_score(ground_truth: List, response: List) -> float:
 
 class Perplexity:
     def __init__(self, lang: str = "en") -> None:
-        """Attention: the performance may not be good.
+        """
+        Attention:
+            the performance may not be good.
 
         Args:
             lang (str, optional): "en" for english or "zh" for chinese. Defaults to "en".
@@ -98,13 +100,14 @@ class Perplexity:
         elif lang == "zh":
             model_name = "uer/gpt2-chinese-cluecorpussmall"
             self.tokenizer = BertTokenizer.from_pretrained(model_name)
+        else:
+            return
 
         self.model = GPT2LMHeadModel.from_pretrained(model_name)
         self.model.eval()
 
     def __call__(self, text: str) -> float:
         """
-
         Args:
             text (str): test str text.
 
@@ -117,9 +120,8 @@ class Perplexity:
         return torch.exp(output.loss).item()
 
 
-def Bleu(response: str, references: List[str], lang: str = "en") -> float:
+def bleu(response: str, references: List[str], lang: str = "en") -> float:
     """see https://aclanthology.org/P02-1040.pdf for more information.
-
     Args:
         response (str): response text from large models.
         references (List[str]): reference texts.
@@ -135,9 +137,8 @@ def Bleu(response: str, references: List[str], lang: str = "en") -> float:
     return sacrebleu.sentence_bleu(response, references).score / 100
 
 
-def Chrf(response: str, references: List[str], lang: str = "en") -> float:
+def chrf(response: str, references: List[str], lang: str = "en") -> float:
     """see https://aclanthology.org/W15-3049.pdf for more information.
-
     Args:
         response (str): response text from large models.
         references (List[str]): reference texts.
@@ -153,9 +154,8 @@ def Chrf(response: str, references: List[str], lang: str = "en") -> float:
     return sacrebleu.sentence_chrf(response, references).score / 100
 
 
-def Ter(response: str, references: List[str], lang: str = "en") -> float:
+def ter(response: str, references: List[str], lang: str = "en") -> float:
     """see https://www.cs.umd.edu/~snover/tercom/ter_tr.pdf for more information.
-
     Args:
         response (str): response text from large models.
         references (List[str]): reference texts.
@@ -171,9 +171,8 @@ def Ter(response: str, references: List[str], lang: str = "en") -> float:
     return sacrebleu.sentence_ter(response, references).score / 100
 
 
-def RougeSU(response: str, references: List[str], lang: str = "en") -> float:
+def rouge_su(response: str, references: List[str], lang: str = "en") -> float:
     """see https://en.wikipedia.org/wiki/ROUGE_(metric) for more information.
-
     Args:
         response (str): response text from large models.
         references (List[str]): reference texts.
@@ -195,9 +194,8 @@ def RougeSU(response: str, references: List[str], lang: str = "en") -> float:
     return rouge.evaluate([response], [references])["rouge-su4"]["f"]
 
 
-def Bert(response: str, references: List[str], lang: str = "en") -> float:
+def bert(response: str, references: List[str], lang: str = "en") -> float:
     """see https://github.com/Tiiiger/bert_score for more information.
-
     Args:
         response (str): response text from large models.
         references (List[str]): reference texts.
@@ -212,4 +210,3 @@ def Bert(response: str, references: List[str], lang: str = "en") -> float:
 
 "metrics for evaluating images"
 
-# ORB

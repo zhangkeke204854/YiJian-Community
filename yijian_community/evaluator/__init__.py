@@ -15,12 +15,12 @@
 
 
 from .metrics import (
-    Bert,
-    Bleu,
-    Chrf,
+    bert,
+    bleu,
+    chrf,
     Perplexity,
-    RougeSU,
-    Ter,
+    rouge_su,
+    ter,
     accuracy,
     attack_success_rate,
     decline_rate,
