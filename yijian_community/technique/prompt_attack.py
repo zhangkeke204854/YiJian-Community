@@ -158,13 +158,13 @@ class TextPromptAttack(BasePromptAttack):
         dataset: Dataset,
         techniques: List[str] = None,
         batch_size: int = BATCH_SIZE,
-        **kwargs,
     ) -> Dataset:
         """
 
         Args:
             dataset (Dataset): input dataset, containing text prompts.
             techniques (List[str], optional): list of attacks used to generated attack-enhanced prompts. Defaults to None.
+            batch_size: length
 
         Raises:
             ValueError: invalid techniques.
@@ -203,9 +203,6 @@ class TextPromptAttack(BasePromptAttack):
                 seeds_list.append(
                     self.attacker.infer_dataset(
                         dataset_with_seeds,
-                        target_column="aug_prompt",
-                        batch_size=batch_size,
-                        **kwargs,
                     )
                     .select_columns(["response_text", "technique", "references"])
                     .rename_columns(
