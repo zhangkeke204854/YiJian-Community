@@ -37,6 +37,7 @@ class NaiveTextSimilarityTagger(Tagger):
 
         Args:
             embedding_model (_type_): model instance for computing text embeddings
+            @rtype: object
         """
         super().__init__()
         self.embedding_model = embedding_model

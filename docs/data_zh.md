@@ -3,7 +3,7 @@
 <p align="center">
     <img src="./figs/risk_taxonomy_zh.jpeg" width="100%" />
 </p>
-<font style="color: gray">业务合规与医疗、政务和金融等具体业务场景相关，相较其他三类风险，通用性较弱，此处不做具体说明。</font>
+<span style="color: gray">业务合规与医疗、政务和金融等具体业务场景相关，相较其他三类风险，通用性较弱，此处不做具体说明。</span>
 
 <br>
 

@@ -3,7 +3,7 @@
 <p align="center">
     <img src="./figs/risk_taxonomy_en.jpeg" width="100%" />
 </p>
-<font style="color: gray">Business compliance is related to specific business scenarios such as healthcare, government affairs, and finance, which will not be discussed in detail here.</font>
+<span style="color: gray">Business compliance is related to specific business scenarios such as healthcare, government affairs, and finance, which will not be discussed in detail here.</span>
 
 <br>
 

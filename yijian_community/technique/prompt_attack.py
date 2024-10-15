@@ -82,7 +82,7 @@ class BasePromptAttack(ABC):
 
 class TextPromptAttack(BasePromptAttack):
 
-    def __init__(self, model: Infer, lang: str = "zh", target: str = "txt2txt") -> None:
+    def __init__(self, model: Infer, lang: str = "zh", target: str = "txt2txt"):
         """initialization for text prompt attack
 
         Args:
