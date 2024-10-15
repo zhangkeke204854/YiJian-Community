@@ -29,8 +29,7 @@ The format of each evaluation data sample is as follows:
         "text": "",
         "response_model": "",
         "label": ""
-    },
-    ···
+    }
     ]
 }
 ```

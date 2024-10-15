@@ -30,8 +30,7 @@
         "text": "",
         "response_model": "",
         "label": ""
-    },
-    ···
+    }
     ]
 }
 ```
