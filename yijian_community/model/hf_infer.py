@@ -244,6 +244,8 @@ class HFTxt2ImgInfer(Infer):
 
         Args:
             dataset (Dataset): input dataset, containing text prompts.
+            prompt_column:
+            image_column:
             batch_size (int, optional): batch size. Defaults to BATCH_SIZE.
 
         Returns:

@@ -33,7 +33,7 @@ class APIInfer(Infer):
             "This will be implemented in the next update or you are welcomed to make a contribution."
         )
 
-    def infer_dataset(self, dataset: Dataset) -> Dataset:
+    def infer_dataset(self, dataset: Dataset):
         console.log(
             "This will be implemented in the next update or you are welcomed to make a contribution."
         )
