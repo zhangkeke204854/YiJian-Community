@@ -37,7 +37,7 @@ from yijian_community.utils import BATCH_SIZE, console
 
 class BasePromptAttack(ABC):
 
-    def __init__(self, model: Infer, lang: str = "zh") -> None:
+    def __init__(self, model: Infer, lang: str = "zh"):
         """
 
         Args:

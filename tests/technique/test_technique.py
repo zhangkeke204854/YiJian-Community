@@ -16,26 +16,28 @@
 
 import pytest
 
+from yijian_community.model import Infer
+
 from yijian_community.technique.prompt_attack import TextPromptAttack
 
 
 def test_text_prompt_attack_init_unsupported_lang():
     with pytest.raises(ValueError):
-        TextPromptAttack(lang="fr")
+        TextPromptAttack(None, lang="fr")
 
 
 def test_text_prompt_attack_init_unsupported_target():
     with pytest.raises(ValueError):
-        TextPromptAttack(target="img2txt")
+        TextPromptAttack(None,target="img2txt")
 
 
 def test_text_prompt_attack_txt2txt_invalid_techniques():
-    attacker = TextPromptAttack(target="txt2txt")
+    attacker = TextPromptAttack(None,target="txt2txt")
     with pytest.raises(ValueError):
         attacker.attack_data("", techniques=["info_compression"])
 
 
 def test_text_prompt_attack_txt2img_invalid_techniques():
-    attacker = TextPromptAttack(target="txt2img")
+    attacker = TextPromptAttack(None,target="txt2img")
     with pytest.raises(ValueError):
         attacker.attack_data("", techniques=["introduction"])
