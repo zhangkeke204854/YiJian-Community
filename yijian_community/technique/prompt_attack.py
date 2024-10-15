@@ -150,7 +150,7 @@ class TextPromptAttack(BasePromptAttack):
             if attack_name in template_based_attacks:
                 aug_data[attack_name] = attack_seed
             else:
-                aug_data[attack_name] = self.attacker.infer_data(attack_seed, **kwargs)
+                aug_data[attack_name] = self.attacker.infer_data(attack_seed)
         return aug_data
 
     def attack_dataset(
