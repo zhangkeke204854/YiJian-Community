@@ -1,15 +1,15 @@
 from sentence_transformers import SentenceTransformer
-
 from yijian_community.data import load_data, save_data
 from yijian_community.evaluator import NaiveTextSimilarityTagger
 from yijian_community.model import VLLMTxt2TxtInfer
 from yijian_community.technique import TextPromptAttack
 from yijian_community.utils import console
 
+
+data_path = '/home/keke/YiJian-Community/yijian_community/data/samples_50_zh.jsonl'
+
 console.log("loading evalation data ...")
-test_set = load_data(
-    "../yijian_community/data/yijian_community/data/samples_50_zh.jsonl"
-)
+test_set = load_data(data_path)
 console.log("evaluation data loaded!")
 
 infer_model = VLLMTxt2TxtInfer("Qwen/Qwen2-7B-Instruct")

@@ -15,12 +15,12 @@
 
 # This is specially provided for Global AI Offensive and Defensive Challenge Track 1：Vaccination for Text-to-Image Generative Models (https://tianchi.aliyun.com/competition/entrance/532268/information?lang=en-us)
 
+
 import torch
 from datasets import Dataset
 from diffusers import FluxPipeline, KolorsPipeline
-
-from yijian_community.defense import InternVL2ImageDefense, ThuCoaiShieldLM
 from yijian_community.model import HFTxt2ImgInfer
+from yijian_community.defense import InternVL2ImageDefense, ThuCoaiShieldLM
 
 
 def text_defense_usage_example(text_defense_model="thu-coai/ShieldLM-7B-internlm2"):
@@ -130,3 +130,6 @@ def image_defense_usage_example(image_defense_model="OpenGVLab/InternVL2-2B"):
     )
     print(dataset_risky)  # the results are stored in column 'text_risky'
     print(dataset_risky[0])
+
+
+text_defense_usage_example()

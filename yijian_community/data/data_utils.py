@@ -15,12 +15,12 @@
 
 
 import os
-from typing import List
 import hashlib
-
 import pandas as pd
-from datasets import Dataset, load_dataset
 from PIL import Image
+from typing import List
+from datasets import Dataset, load_dataset
+
 
 
 def load_data(data_path: str) -> Dataset:
@@ -35,9 +35,10 @@ def load_data(data_path: str) -> Dataset:
     Returns:
         Dataset: a Dataset instance for the later evaluation pipeline
     """
+
     if os.path.isdir(data_path):
         return load_dataset(data_path)["train"]
-    if os.path.isfile(data_path):
+    elif os.path.isfile(data_path):
         if data_path.endswith("csv"):
             # load single csv file with load_dataset() is astonishingly slow
             return Dataset.from_pandas(pd.read_csv(data_path))
@@ -46,7 +47,8 @@ def load_data(data_path: str) -> Dataset:
         if data_path.endswith("parquet"):
             return load_dataset("parquet", data_files=data_path)["train"]
     raise ValueError(
-        f"Invalid data_path, should be a path to a 'csv', 'json' or 'parquet' file, or a path to a directory containing the three types of files, but {data_path} found!"
+        f"Invalid data_path, should be a path to a 'csv', 'json' or 'parquet' file, or a path to a directory "
+        f"containing the three types of files, but {data_path} found!"
     )
 
 
@@ -70,13 +72,8 @@ def save_data(data_path: str, data: Dataset) -> None:
         )
 
 
-def save_image(
-    save_path: str,
-    prompt_texts: List[str],
-    images: List[Image.Image],
-) -> List[str]:
+def save_image(save_path: str, prompt_texts: List[str], images: List[Image.Image]) -> List[str]:
     """save images and return the save path
-
     Args:
         save_path (str): path to the directory which saves the images
         prompt_texts (List[str]): list of prompt texts
